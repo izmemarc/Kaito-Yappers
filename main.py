@@ -2,7 +2,9 @@ import asyncio
 import os
 import sys
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
+import pytz
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from typing import Dict, Any, List
 from dotenv import load_dotenv
 import re
@@ -33,20 +35,21 @@ logger = logging.getLogger(__name__)
 def load_environment() -> Dict[str, Any]:
     """Load and validate environment variables."""
     load_dotenv()
-    required_vars = ['OPENAI_API_KEY', 'APIFY_API_KEY', 'BOT_API_KEY', 'CHANNEL_ID']
+    required_vars = ['OPENAI_API_KEY', 'TWITTER_API_KEY', 'BOT_API_KEY', 'CHANNEL_ID']
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     if missing_vars:
         logger.error(f"Missing required environment variables: {', '.join(missing_vars)}")
         sys.exit(1)
     return {
         'openai_api_key': os.getenv('OPENAI_API_KEY'),
-        'apify_api_key': os.getenv('APIFY_API_KEY'),
+        'twitter_api_key': os.getenv('TWITTER_API_KEY'),
         'bot_api_key': os.getenv('BOT_API_KEY'),
         'channel_id': os.getenv('CHANNEL_ID'),
         'model_name': os.getenv('MODEL_NAME', 'gpt-4o-mini'),
         'max_tokens': int(os.getenv('MAX_TOKENS', '4000')),
         'temperature': float(os.getenv('TEMPERATURE', '0.7')),
-        'kaito_timeframe': os.getenv('KAITO_TIMEFRAME', '7d')
+        'kaito_timeframe': os.getenv('KAITO_TIMEFRAME', '7d'),
+        'run_time': os.getenv('RUN_TIME', '09:00')  # Default to 9 AM UTC+8
     }
 
 
@@ -250,21 +253,40 @@ class TelegramSender:
 # -----------------------------------------------------------------------------
 
 async def run_analysis(config: Dict[str, Any]) -> None:
-    """
-    Run the complete analysis pipeline and send the report to Telegram using the custom payload.
-    """
+    """Run the complete analysis pipeline."""
     try:
+        logger.info("Starting scheduled analysis run...")
         logger.info("Starting Kaito leaderboard processing...")
         kaito = KaitoLeaderboard(timeframe=config.get('kaito_timeframe', '7d'))
         top_20 = kaito.get_leaderboard()
         logger.info("Kaito data processed and cached")
 
         logger.info("Starting Twitter data scraping...")
-        twitter = TwitterScraper(config['apify_api_key'])
+        twitter = TwitterScraper(config['twitter_api_key'])
         usernames = [acc['username'] for acc in top_20]
+        
+        # Test API with first user and log detailed response
+        test_user = usernames[0]
+        logger.info(f"Testing Twitter API with user: {test_user}")
+        test_tweets = await twitter.get_user_tweets(test_user)
+        
+        if not test_tweets:
+            # Try a known good username as fallback
+            fallback_user = "VitalikButerin"
+            logger.info(f"Retrying with fallback user: {fallback_user}")
+            test_tweets = await twitter.get_user_tweets(fallback_user)
+            if not test_tweets:
+                raise Exception(f"Twitter API authentication failed. Key: {config['twitter_api_key'][:10]}...")
+        
+        logger.info(f"Successfully tested Twitter API, proceeding with {len(usernames)} users")
         await twitter.scrape_multiple_users(usernames)
-        logger.info("Twitter data scraping completed and cached")
+        
+        if not twitter.cache:
+            raise Exception("Failed to fetch any tweets after successful authentication")
+            
+        logger.info(f"Successfully scraped tweets for {len(twitter.cache)} users")
 
+        # Continue with the rest of your analysis...
         logger.info("Starting analysis generation...")
         generator = ReportGenerator(
             api_key=config['openai_api_key'],
@@ -287,11 +309,10 @@ async def run_analysis(config: Dict[str, Any]) -> None:
         channel_id = config['channel_id']
         sender = TelegramSender(bot_token)
 
-        # Format and send the "Top Yappers" section
+        # Format and send the report sections
         top_yappers_message = await sender.format_top_yappers(report_content)
         await sender.send_message(channel_id, top_yappers_message)
 
-        # Format and send the "What's Yappening" section in chunks
         whats_yappening_messages = await sender.format_whats_yappening(report_content)
         for message in whats_yappening_messages:
             await sender.send_message(channel_id, message)
@@ -305,20 +326,71 @@ async def run_analysis(config: Dict[str, Any]) -> None:
 
     except Exception as e:
         logger.error(f"Error in analysis pipeline: {str(e)}", exc_info=True)
-        raise
+        # Optionally, send error notification to Telegram
+        try:
+            bot_token = config['bot_api_key']
+            channel_id = config['channel_id']
+            sender = TelegramSender(bot_token)
+            error_message = f"❌ Analysis pipeline error: {str(e)}"
+            await sender.send_message(channel_id, error_message)
+        except:
+            logger.error("Failed to send error notification")
 
+def get_next_run_time(scheduler: AsyncIOScheduler, run_time: str, tz: pytz.timezone) -> datetime:
+    """Calculate the next run time for the scheduler"""
+    now = datetime.now(tz)
+    run_hour, run_minute = map(int, run_time.split(':'))
+    next_run = now.replace(hour=run_hour, minute=run_minute, second=0, microsecond=0)
+    
+    if next_run <= now:
+        next_run += timedelta(days=1)
+    
+    return next_run
 
-def main():
-    ensure_reports_directory()
+async def main():
+    """Main function to set up scheduling"""
     config = load_environment()
+    
+    # Set up the scheduler
+    scheduler = AsyncIOScheduler()
+    
+    # Get the timezone for UTC+8
+    tz = pytz.timezone('Asia/Singapore')
+    
+    # Parse the run time from config
+    run_time = config['run_time']
+    run_hour, run_minute = map(int, run_time.split(':'))
+    
+    # Schedule the job to run daily at specified time in UTC+8
+    scheduler.add_job(
+        run_analysis,
+        'cron',
+        hour=run_hour,
+        minute=run_minute,
+        timezone=tz,
+        args=[config],
+        id='daily_analysis'
+    )
+    
+    # Calculate and log next run time
+    next_run = get_next_run_time(scheduler, run_time, tz)
+    logger.info(f"Scheduled next run for: {next_run.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+    
+    # Start the scheduler
+    scheduler.start()
+    logger.info("Scheduler started successfully")
+    
     try:
-        asyncio.run(run_analysis(config))
-    except KeyboardInterrupt:
-        logger.info("Analysis interrupted by user")
-    except Exception as e:
-        logger.error(f"Analysis failed: {str(e)}", exc_info=True)
-        sys.exit(1)
-
-
+        # Keep the script running
+        while True:
+            await asyncio.sleep(60)
+            # Log a heartbeat every hour
+            if datetime.now(tz).minute == 0:
+                logger.info("Bot is running... Next run at: "
+                          f"{get_next_run_time(scheduler, run_time, tz).strftime('%Y-%m-%d %H:%M:%S %Z')}")
+    except (KeyboardInterrupt, SystemExit):
+        logger.info("Shutting down scheduler...")
+        scheduler.shutdown()
+        
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())  

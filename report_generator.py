@@ -31,6 +31,10 @@ Do not alter or paraphrase key details—maintain original wording for accuracy.
 Embed the tweet link in the quoted text to ensure direct access to the source.
 Ignore irrelevant content—if there are fewer than three qualifying tweets, do not force inclusions.
 Remove irrelevant characters letters or symbols to the news itself
+Remove emojis 
+Remove hashtags 
+Remove phrases like "breaking news" or "latest update"
+Truncate or remove the non important parts of the tweet
 
 Their tweets:
 {tweets}"""
@@ -163,10 +167,10 @@ Their tweets:
 
     async def generate_full_report(self) -> str:
         """Generate a complete analysis report"""
-        # Get tweets from cache
         tweets = self.cache.get('tweets', {})
         if not tweets:
-            raise Exception("No tweet data found in cache")
+            logger.error("No tweet data found in cache")
+            return self._generate_empty_report()
 
         # Combine all tweets into a single list
         all_tweets = []
@@ -197,7 +201,7 @@ Their tweets:
             
             for idx, username in enumerate(sorted(rankings.keys(), key=lambda x: rankings[x]['rank'])):
                 rank_info = rankings[username]
-                f.write(f"### {username} | {rank_info['score']:.3f}%\n\n")
+                f.write(f"### {username} | {rank_info['score']:.2f}%\n\n")
 
                 seen_tweets = set()
     

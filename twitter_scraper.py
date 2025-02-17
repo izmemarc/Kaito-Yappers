@@ -1,83 +1,80 @@
-from apify_client import ApifyClient
-import json
-from datetime import datetime
-import os
-import asyncio
-from typing import List, Dict, Any
+import aiohttp
 import logging
+from typing import List, Dict, Any
+import asyncio
+import json
 
 logger = logging.getLogger(__name__)
 
 class TwitterScraper:
-    def __init__(self, api_token: str):
-        self.client = ApifyClient(api_token)
+    def __init__(self, api_key: str):
+        self.api_key = api_key
         self.cache = {}
-        
-    def scrape_user(self, username: str):
-        """Run single user scrape exactly like twitter_scraper.py"""
-        run_input = {
-            "filter:blue_verified": False,
-            "filter:consumer_video": False,
-            "filter:has_engagement": False,
-            "filter:hashtags": False,
-            "filter:images": False,
-            "filter:links": False,
-            "filter:media": False,
-            "filter:mentions": False,
-            "filter:native_video": False,
-            "filter:nativeretweets": False,
-            "filter:news": False,
-            "filter:pro_video": False,
-            "filter:quote": False,
-            "filter:replies": False,
-            "filter:safe": False,
-            "filter:spaces": False,
-            "filter:twimg": False,
-            "filter:verified": False,
-            "filter:videos": False,
-            "filter:vine": False,
-            "from": username,  # Just change the username here
-            "include:nativeretweets": False,
-            "lang": "en",
-            "maxItems": 60,
-            "queryType": "Top",
-            "within_time": "1d"
+        self.base_url = "https://api.twitterapi.io/twitter"
+        self.headers = {
+            "X-API-Key": api_key,
+            "Accept": "application/json"
         }
 
+    async def get_user_tweets(self, username: str) -> List[Dict]:
+        """Get recent tweets for a user using TwitterAPI.io"""
         try:
-            # Run the Actor and wait for it to finish
-            logger.info(f"Starting Twitter scrape for {username}...")
-            run = self.client.actor("CJdippxWmn9uRfooo").call(run_input=run_input)
-            
-            # Fetch Actor results
-            logger.info(f"Fetching results for {username}...")
-            results = []
-            dataset = self.client.dataset(run["defaultDatasetId"])
-            for item in dataset.iterate_items():
-                results.append(item)
-            
-            # Store results in cache by username
-            self.cache[username] = results
-            
-            logger.info(f"Data cached for {username}")
-            logger.info(f"Total tweets collected for {username}: {len(results)}")
-            
-            return results
-            
+            if not username or not self.api_key:
+                logger.warning(f"Missing username or API key for {username}")
+                return []
+
+            url = f"{self.base_url}/user/last_tweets"
+            params = {
+                "userName": username
+            }
+
+            logger.info(f"Making request to {url} for user {username}")
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, headers=self.headers, params=params) as response:
+                    response_text = await response.text()
+                    logger.info(f"Response status: {response.status}")
+
+                    if response.status == 401:
+                        logger.error(f"TwitterAPI.io authentication failed for {username}. Response: {response_text}")
+                        return []
+                    elif response.status != 200:
+                        logger.error(f"Error {response.status} getting tweets for {username}. Response: {response_text}")
+                        return []
+                    
+                    try:
+                        data = json.loads(response_text)
+                        # Extract tweets from the nested structure
+                        if (isinstance(data, dict) and 
+                            data.get('status') == 'success' and 
+                            isinstance(data.get('data'), dict)):
+                            
+                            tweets = data['data'].get('tweets', [])
+                            logger.info(f"Successfully retrieved {len(tweets)} tweets for {username}")
+                            if tweets:
+                                self.cache[username] = tweets
+                            return tweets
+                        else:
+                            logger.error(f"Unexpected data format for {username}. Response structure: {json.dumps(data)[:200]}...")
+                            return []
+                    except json.JSONDecodeError as e:
+                        logger.error(f"Failed to parse JSON response for {username}: {e}")
+                        return []
+
         except Exception as e:
-            logger.error(f"Error scraping {username}: {str(e)}")
+            logger.error(f"Error scraping {username}: {str(e)}", exc_info=True)
             return []
 
-    async def scrape_multiple_users(self, usernames: List[str]):
-        """Run multiple instances concurrently using asyncio.to_thread"""
-        tasks = [asyncio.to_thread(self.scrape_user, username) for username in usernames]
-        results = await asyncio.gather(*tasks)
-        
-        # Results are already cached by username in scrape_user
-        return results
-        
+    async def scrape_multiple_users(self, usernames: List[str]) -> None:
+        """Scrape tweets from multiple users concurrently"""
+        tasks = [self.get_user_tweets(username) for username in usernames]
+        await asyncio.gather(*tasks)
+
     def get_cached_data(self, timestamp: str = None) -> Dict[str, Any]:
         """Get cached data for a specific timestamp or latest"""
+        if not self.cache:
+            logger.warning("Cache is empty")
+            return {}
+            
         if timestamp:
             return {
                 k: v for k, v in self.cache.items() 
