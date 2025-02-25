@@ -20,6 +20,7 @@ from telegram.constants import ParseMode
 from kaito_leaderboard import KaitoLeaderboard
 from twitter_scraper import TwitterScraper
 from report_generator import ReportGenerator
+from validate_report import process_report
 
 # -----------------------------------------------------------------------------
 # Logging and Environment Setup
@@ -27,14 +28,26 @@ from report_generator import ReportGenerator
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('kaito_report.log'),
+        logging.StreamHandler()
+    ]
 )
 logger = logging.getLogger(__name__)
 
+# Load environment variables first
+load_dotenv()
+
+# Configuration
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY environment variable is not set")
+
+SCHEDULED_MODE = False  # Easy toggle for scheduled mode
 
 def load_environment() -> Dict[str, Any]:
     """Load and validate environment variables."""
-    load_dotenv()
     required_vars = ['OPENAI_API_KEY', 'TWITTER_API_KEY', 'BOT_API_KEY', 'CHANNEL_ID']
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     if missing_vars:
@@ -347,50 +360,25 @@ def get_next_run_time(scheduler: AsyncIOScheduler, run_time: str, tz: pytz.timez
     
     return next_run
 
+async def scheduled_task():
+    """Function to be used when switching to scheduled mode"""
+    while True:
+        await run_analysis(load_environment())
+        # Wait for 1 hour before next run
+        await asyncio.sleep(3600)
+
 async def main():
-    """Main function to set up scheduling"""
-    config = load_environment()
-    
-    # Set up the scheduler
-    scheduler = AsyncIOScheduler()
-    
-    # Get the timezone for UTC+8
-    tz = pytz.timezone('Asia/Singapore')
-    
-    # Parse the run time from config
-    run_time = config['run_time']
-    run_hour, run_minute = map(int, run_time.split(':'))
-    
-    # Schedule the job to run daily at specified time in UTC+8
-    scheduler.add_job(
-        run_analysis,
-        'cron',
-        hour=run_hour,
-        minute=run_minute,
-        timezone=tz,
-        args=[config],
-        id='daily_analysis'
-    )
-    
-    # Calculate and log next run time
-    next_run = get_next_run_time(scheduler, run_time, tz)
-    logger.info(f"Scheduled next run for: {next_run.strftime('%Y-%m-%d %H:%M:%S %Z')}")
-    
-    # Start the scheduler
-    scheduler.start()
-    logger.info("Scheduler started successfully")
-    
-    try:
-        # Keep the script running
-        while True:
-            await asyncio.sleep(60)
-            # Log a heartbeat every hour
-            if datetime.now(tz).minute == 0:
-                logger.info("Bot is running... Next run at: "
-                          f"{get_next_run_time(scheduler, run_time, tz).strftime('%Y-%m-%d %H:%M:%S %Z')}")
-    except (KeyboardInterrupt, SystemExit):
-        logger.info("Shutting down scheduler...")
-        scheduler.shutdown()
-        
+    if SCHEDULED_MODE:
+        logger.info("Starting in scheduled mode...")
+        await scheduled_task()
+    else:
+        logger.info("Starting in single-run mode...")
+        await run_analysis(load_environment())
+
 if __name__ == "__main__":
-    asyncio.run(main())  
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        logger.info("Process interrupted by user")
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}", exc_info=True)  

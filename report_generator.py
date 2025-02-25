@@ -5,6 +5,7 @@ from typing import List, Dict, Any, Optional
 import openai
 import logging
 import re
+from validate_report import save_raw_report
 
 logger = logging.getLogger(__name__)
 class ReportGenerator:
@@ -39,12 +40,14 @@ Truncate or remove the non important parts of the tweet
 Their tweets:
 {tweets}"""
 
-    def __init__(self, api_key: str, model: str = "gpt-4o-mini", max_tokens: int = 4000, temperature: float = 0.7):
-        openai.api_key = api_key
+    def __init__(self, api_key: str, model: str = "gpt-4-0125-preview", max_tokens: int = 4000, temperature: float = 0.7):
         self.model = model
         self.max_tokens = max_tokens
         self.temperature = temperature
-        self.cache = {}  # In-memory cache
+        self.cache = {}
+        
+        # Initialize OpenAI API key
+        openai.api_key = api_key
 
     def cleanup_temp_folders(self):
         """Clean up temporary data folders"""
@@ -98,20 +101,24 @@ Their tweets:
 
         rank_desc = 'takes top1 yapper today' if rank == 1 else f'is at top {rank}'
         
+        # Use the old format for OpenAI API calls
         response = await openai.ChatCompletion.acreate(
             model=self.model,
-            messages=[{
-                "role": "system",
-                "content": self.TWEET_SYSTEM_PROMPT
-            }, {
-                "role": "user",
-                "content": self.TWEET_USER_PROMPT.format(
-                    username=username,
-                    rank=rank,
-                    rank_desc=rank_desc,
-                    tweets=tweet_text
-                )
-            }],
+            messages=[
+                {
+                    "role": "system",
+                    "content": self.TWEET_SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": self.TWEET_USER_PROMPT.format(
+                        username=username,
+                        rank=rank,
+                        rank_desc=rank_desc,
+                        tweets=tweet_text
+                    )
+                }
+            ],
             max_tokens=self.max_tokens,
             temperature=self.temperature
         )
@@ -211,6 +218,9 @@ Their tweets:
 
                     for line in lines:
                         if line.strip().startswith('-') and line not in seen_tweets:
+                            # Skip retweets
+                            if line.lower().strip().startswith('- rt @'):
+                                continue
                             # Remove tweets containing "ont"
                             if "ont" in line.lower():
                                 continue
@@ -233,6 +243,14 @@ Their tweets:
 
             f.write("\n---\n\n")
 
+        # Read the generated report and save raw version
+        with open(report_file, 'r', encoding='utf-8') as f:
+            report_content = f.read()
+        
+        # Save raw report
+        raw_report = save_raw_report(report_content)
+        logger.info(f"Raw report saved to: {raw_report}")
+
         self.cleanup_temp_folders()
         logger.info(f"Report generated: {report_file}")
-        return report_file 
+        return report_file
