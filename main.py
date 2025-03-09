@@ -44,8 +44,6 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY environment variable is not set")
 
-SCHEDULED_MODE = False  # Easy toggle for scheduled mode
-
 def load_environment() -> Dict[str, Any]:
     """Load and validate environment variables."""
     required_vars = ['OPENAI_API_KEY', 'TWITTER_API_KEY', 'BOT_API_KEY', 'CHANNEL_ID']
@@ -334,7 +332,7 @@ async def run_analysis(config: Dict[str, Any]) -> None:
         kaito.cache.clear()
         twitter.cache.clear()
         generator.cache.clear()
-
+        
         logger.info("Complete analysis pipeline finished successfully!")
 
     except Exception as e:
@@ -349,31 +347,78 @@ async def run_analysis(config: Dict[str, Any]) -> None:
         except:
             logger.error("Failed to send error notification")
 
-def get_next_run_time(scheduler: AsyncIOScheduler, run_time: str, tz: pytz.timezone) -> datetime:
-    """Calculate the next run time for the scheduler"""
-    now = datetime.now(tz)
-    run_hour, run_minute = map(int, run_time.split(':'))
-    next_run = now.replace(hour=run_hour, minute=run_minute, second=0, microsecond=0)
+async def wait_until_next_run() -> None:
+    """Wait until the next 12:00 UTC run time (20:00 UTC+8)."""
+    now = datetime.now(pytz.UTC)
+    next_run = now.replace(hour=12, minute=0, second=0, microsecond=0)
     
     if next_run <= now:
         next_run += timedelta(days=1)
     
-    return next_run
+    wait_seconds = (next_run - now).total_seconds()
+    logger.info(f"Waiting until next run time at {next_run} UTC (20:00 UTC+8)")
+    await asyncio.sleep(wait_seconds)
 
-async def scheduled_task():
-    """Function to be used when switching to scheduled mode"""
-    while True:
-        await run_analysis(load_environment())
-        # Wait for 1 hour before next run
-        await asyncio.sleep(3600)
+async def generate_reports(tweets: List[Dict], config: Dict) -> None:
+    """Generate reports from processed tweets."""
+    try:
+        # Initialize TelegramSender
+        sender = TelegramSender(config['bot_api_key'])
+        channel_id = config['channel_id']
+        
+        # Send each tweet as a message
+        for tweet in tweets:
+            message = f"{tweet['text']}\n{tweet['link']}"
+            await sender.send_message(channel_id, message)
+            
+    except Exception as e:
+        logger.error(f"Error generating reports: {str(e)}")
+
+async def process_tweets(config: Dict) -> List[Dict]:
+    """Process tweets from Twitter API."""
+    try:
+        twitter = TwitterScraper(config['twitter_api_key'])
+        tweets = await twitter.get_user_tweets("VitalikButerin")  # Using a default user as fallback
+        return [{'text': tweet.text, 'link': tweet.link} for tweet in tweets]
+    except Exception as e:
+        logger.error(f"Error processing tweets: {str(e)}")
+        return []
 
 async def main():
-    if SCHEDULED_MODE:
-        logger.info("Starting in scheduled mode...")
-        await scheduled_task()
-    else:
-        logger.info("Starting in single-run mode...")
-        await run_analysis(load_environment())
+    logger.info("Starting up...")
+    
+    while True:
+        try:
+            await wait_until_next_run()
+            logger.info("Starting scheduled analysis run...")
+            
+            # Only initialize everything after waiting
+            config = load_environment()
+            
+            # Initialize Kaito
+            logger.info("Starting Kaito leaderboard processing...")
+            kaito = KaitoLeaderboard(timeframe=config.get('kaito_timeframe', '7d'))
+            top_20 = kaito.get_leaderboard()
+            
+            # Initialize Twitter
+            logger.info("Starting Twitter data scraping...")
+            twitter = TwitterScraper(config['twitter_api_key'])
+            
+            # Run the analysis
+            await run_analysis({
+                **config,
+                'kaito': kaito,
+                'twitter': twitter,
+                'top_20': top_20
+            })
+            
+            # Clear everything after run
+            del kaito
+            del twitter
+            
+        except Exception as e:
+            logger.error(f"Error in main loop: {str(e)}", exc_info=True)
+            await asyncio.sleep(60)  # Wait a bit before retrying
 
 if __name__ == "__main__":
     try:

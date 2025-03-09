@@ -48,8 +48,14 @@ class TwitterScraper:
                             data.get('status') == 'success' and 
                             isinstance(data.get('data'), dict)):
                             
-                            tweets = data['data'].get('tweets', [])
-                            logger.info(f"Successfully retrieved {len(tweets)} tweets for {username}")
+                            all_tweets = data['data'].get('tweets', [])
+                            # Filter out retweets and ensure author matches username
+                            tweets = [
+                                tweet for tweet in all_tweets 
+                                if 'retweetedTweet' not in tweet 
+                                and tweet.get('author', {}).get('userName', '').lower() == username.lower()
+                            ]
+                            logger.info(f"Successfully retrieved {len(tweets)} original tweets (filtered from {len(all_tweets)} total) for {username}")
                             if tweets:
                                 self.cache[username] = tweets
                             return tweets

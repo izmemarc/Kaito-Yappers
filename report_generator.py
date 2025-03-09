@@ -17,7 +17,12 @@ Guidelines:
 - **Exclude general takes, speculation, humor, and non-actionable insights**.
 - Do not include duplicate tweets—each tweet should provide unique value.
 - Format each point as a **single-line bullet point** with a clear takeaway.
-- Include the **link to the most impactful tweet** at the end.
+ Fix the capitalization of the text and make sure the tickers are in uppercase
+Remove emojis 
+Remove hashtags 
+Remove phrases like "breaking news" or "latest update" or "new update" anything that is clickbait just keep the news
+Truncate or remove the non important parts of the tweet
+Fix the capitalization of the text and make sure the tickers are in uppercase
 """
 
 
@@ -34,13 +39,14 @@ Ignore irrelevant content—if there are fewer than three qualifying tweets, do 
 Remove irrelevant characters letters or symbols to the news itself
 Remove emojis 
 Remove hashtags 
-Remove phrases like "breaking news" or "latest update"
+Remove phrases like "breaking news" or "latest update" anything that is clickbait just keep the news
 Truncate or remove the non important parts of the tweet
+Fix the capitalization of the text and make sure the tickers are in uppercase
 
 Their tweets:
 {tweets}"""
 
-    def __init__(self, api_key: str, model: str = "gpt-4-0125-preview", max_tokens: int = 4000, temperature: float = 0.7):
+    def __init__(self, api_key: str, model: str = "gpt-4o-mini", max_tokens: int = 4000, temperature: float = 0.7):
         self.model = model
         self.max_tokens = max_tokens
         self.temperature = temperature
@@ -68,13 +74,20 @@ Their tweets:
         processed_tweets = []
         
         for tweet in tweets:
-            # Skip replies
-            if tweet.get('isReply', False):
+            # Skip replies and retweets
+            if tweet.get('isReply', False) or 'RT @' in tweet.get('text', '').upper():
                 continue
+            
+            # Clean up URL if it has an extra parenthesis
+            url = tweet.get('url', '')
+            if url.endswith(').'):
+                url = url[:-2] + '.'
+            elif url.endswith(')'):
+                url = url[:-1]
             
             # Extract only essential fields
             processed_tweet = {
-                'url': tweet.get('url', ''),
+                'url': url,
                 'text': tweet.get('text', ''),
                 'engagement': {
                     'likes': tweet.get('likeCount', 0),
@@ -217,20 +230,15 @@ Their tweets:
                     lines = user_analysis.split('\n')
 
                     for line in lines:
-                        if line.strip().startswith('-') and line not in seen_tweets:
+                        if line.strip().startswith('-'):
                             # Skip retweets
-                            if line.lower().strip().startswith('- rt @'):
+                            if any(rt in line.lower() for rt in ['rt @', 'retweet', 'retweeted']):
                                 continue
-                            # Remove tweets containing "ont"
-                            if "ont" in line.lower():
-                                continue
-                            # Remove quotation marks and fix hyperlink formatting
-                            line = line.replace('"', '')
-                            line = re.sub(r'\[.*?\]\s*\((https?://\S+?)\)\)', r'[\1]', line)
-                            # Remove [word] at the end
-                            line = re.sub(r'\[\w+\]$', '', line, flags=re.IGNORECASE).strip()
-                            # Normalize case
-                            line = line.capitalize()
+                            
+                            # Clean up URL formatting
+                            line = re.sub(r'\)\s*\)', ')', line)
+                            line = re.sub(r'\.\)', ')', line)
+                            
                             f.write(f"{line}\n")
                             seen_tweets.add(line)
 
