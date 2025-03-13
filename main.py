@@ -276,25 +276,20 @@ async def run_analysis(config: Dict[str, Any]) -> None:
         twitter = TwitterScraper(config['twitter_api_key'])
         usernames = [acc['username'] for acc in top_20]
         
-        # Test API with first user and log detailed response
-        test_user = usernames[0]
-        logger.info(f"Testing Twitter API with user: {test_user}")
-        test_tweets = await twitter.get_user_tweets(test_user)
+        # Initialize a dictionary to store tweets by username
+        tweets_by_user = {}
+
+        # Scrape tweets for each user and store them in the dictionary
+        for username in usernames:
+            user_tweets = await twitter.get_user_tweets(username)
+            if user_tweets:
+                # Log the association of tweets with the username
+                logger.info(f"Storing tweets for user: {username}")
+                tweets_by_user[username] = user_tweets
+
+        # Store all tweets in the Twitter cache
+        twitter.cache = tweets_by_user
         
-        if not test_tweets:
-            # Try a known good username as fallback
-            fallback_user = "VitalikButerin"
-            logger.info(f"Retrying with fallback user: {fallback_user}")
-            test_tweets = await twitter.get_user_tweets(fallback_user)
-            if not test_tweets:
-                raise Exception(f"Twitter API authentication failed. Key: {config['twitter_api_key'][:10]}...")
-        
-        logger.info(f"Successfully tested Twitter API, proceeding with {len(usernames)} users")
-        await twitter.scrape_multiple_users(usernames)
-        
-        if not twitter.cache:
-            raise Exception("Failed to fetch any tweets after successful authentication")
-            
         logger.info(f"Successfully scraped tweets for {len(twitter.cache)} users")
 
         # Continue with the rest of your analysis...
@@ -308,11 +303,11 @@ async def run_analysis(config: Dict[str, Any]) -> None:
         generator.cache['rankings'] = top_20
         generator.cache['tweets'] = twitter.cache
 
-        report_file = await generator.generate_full_report()
-        logger.info(f"Analysis report generated: {report_file}")
+        report_content = await generator.generate_full_report()  # Call without passing twitter.cache
+        logger.info(f"Analysis report generated: {report_content}")
 
         # Read the generated report content
-        with open(report_file, 'r', encoding='utf-8') as file:
+        with open(report_content, 'r', encoding='utf-8') as file:
             report_content = file.read()
 
         # Initialize TelegramSender
@@ -348,12 +343,12 @@ async def run_analysis(config: Dict[str, Any]) -> None:
             logger.error("Failed to send error notification")
 
 async def wait_until_next_run() -> None:
-    """Wait until the next 12:00 UTC run time (20:00 UTC+8)."""
+    """Wait until the next 20:00 UTC+8 run time (12:00 UTC)."""
     now = datetime.now(pytz.UTC)
-    next_run = now.replace(hour=12, minute=0, second=0, microsecond=0)
+    next_run = now.replace(hour=12, minute=0, second=0, microsecond=0)  # 12:00 UTC is 20:00 UTC+8
     
     if next_run <= now:
-        next_run += timedelta(days=1)
+        next_run += timedelta(days=1)  # Move to the next day if the time has already passed
     
     wait_seconds = (next_run - now).total_seconds()
     logger.info(f"Waiting until next run time at {next_run} UTC (20:00 UTC+8)")
@@ -389,10 +384,11 @@ async def main():
     
     while True:
         try:
-            await wait_until_next_run()
+            await wait_until_next_run()  # Wait until the next scheduled run time
+            
             logger.info("Starting scheduled analysis run...")
             
-            # Only initialize everything after waiting
+            # Initialize everything immediately
             config = load_environment()
             
             # Initialize Kaito
@@ -415,7 +411,7 @@ async def main():
             # Clear everything after run
             del kaito
             del twitter
-            
+
         except Exception as e:
             logger.error(f"Error in main loop: {str(e)}", exc_info=True)
             await asyncio.sleep(60)  # Wait a bit before retrying

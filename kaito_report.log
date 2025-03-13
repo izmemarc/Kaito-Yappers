@@ -13238,3 +13238,474 @@ NameError: name 'process_tweets' is not defined
 2025-03-08 14:34:22,428 - __main__ - INFO - Waiting until next run time at 2025-03-08 12:00:00+00:00 UTC (20:00 UTC+8)
 2025-03-08 14:35:35,887 - __main__ - INFO - Starting up...
 2025-03-08 14:35:35,888 - __main__ - INFO - Waiting until next run time at 2025-03-08 12:00:00+00:00 UTC (20:00 UTC+8)
+2025-03-12 01:56:09,590 - __main__ - INFO - Starting up...
+2025-03-12 01:56:09,590 - __main__ - INFO - Waiting until next run time at 2025-03-12 12:00:00+00:00 UTC (20:00 UTC+8)
+2025-03-12 01:57:21,322 - __main__ - INFO - Starting up...
+2025-03-12 01:57:21,322 - __main__ - INFO - Waiting until next run time at 2025-03-12 12:00:00+00:00 UTC (20:00 UTC+8)
+2025-03-12 01:57:42,374 - __main__ - INFO - Starting up...
+2025-03-12 01:57:42,374 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 01:57:42,375 - __main__ - ERROR - Missing required environment variables: TWITTER_API_KEY, BOT_API_KEY, CHANNEL_ID
+2025-03-12 01:58:21,544 - __main__ - INFO - Starting up...
+2025-03-12 01:58:21,544 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 01:58:21,544 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 01:58:21,544 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 01:58:23,390 - kaito_leaderboard - INFO - Status Code: 201
+2025-03-12 01:58:23,391 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 01:58:23,393 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 01:58:23,393 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 01:58:23,393 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 01:58:23,393 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 01:58:24,013 - kaito_leaderboard - INFO - Status Code: 200
+2025-03-12 01:58:24,014 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 01:58:24,016 - __main__ - INFO - Kaito data processed and cached
+2025-03-12 01:58:24,016 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 01:58:24,016 - __main__ - INFO - Testing Twitter API with user: davidsacks47
+2025-03-12 01:58:24,016 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 01:58:27,428 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:27,429 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for davidsacks47
+2025-03-12 01:58:27,430 - __main__ - INFO - Successfully tested Twitter API, proceeding with 20 users
+2025-03-12 01:58:27,430 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 01:58:30,317 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:30,319 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for davidsacks47
+2025-03-12 01:58:30,319 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user NTmoney
+2025-03-12 01:58:33,184 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:33,185 - twitter_scraper - INFO - Successfully retrieved 11 original tweets (filtered from 11 total) for NTmoney
+2025-03-12 01:58:33,186 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user EleanorTerrett
+2025-03-12 01:58:36,444 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:36,445 - twitter_scraper - INFO - Successfully retrieved 12 original tweets (filtered from 12 total) for EleanorTerrett
+2025-03-12 01:58:36,446 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user iamDCinvestor
+2025-03-12 01:58:39,432 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:39,432 - twitter_scraper - INFO - Successfully retrieved 12 original tweets (filtered from 12 total) for iamDCinvestor
+2025-03-12 01:58:39,433 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user cz_binance
+2025-03-12 01:58:42,674 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:42,676 - twitter_scraper - INFO - Successfully retrieved 19 original tweets (filtered from 19 total) for cz_binance
+2025-03-12 01:58:42,676 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user mdudas
+2025-03-12 01:58:46,539 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:46,540 - twitter_scraper - INFO - Successfully retrieved 19 original tweets (filtered from 19 total) for mdudas
+2025-03-12 01:58:46,540 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user 0xMert_
+2025-03-12 01:58:49,969 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:49,971 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for 0xMert_
+2025-03-12 01:58:49,971 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user nic__carter
+2025-03-12 01:58:53,238 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:53,239 - twitter_scraper - INFO - Successfully retrieved 14 original tweets (filtered from 14 total) for nic__carter
+2025-03-12 01:58:53,240 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user ljxie
+2025-03-12 01:58:57,261 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:57,263 - twitter_scraper - INFO - Successfully retrieved 16 original tweets (filtered from 16 total) for ljxie
+2025-03-12 01:58:57,263 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user jchervinsky
+2025-03-12 01:58:59,993 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:58:59,993 - twitter_scraper - INFO - Successfully retrieved 6 original tweets (filtered from 6 total) for jchervinsky
+2025-03-12 01:58:59,994 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user Punk9277
+2025-03-12 01:59:02,939 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:02,941 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for Punk9277
+2025-03-12 01:59:02,941 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user rovercrc
+2025-03-12 01:59:05,989 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:05,989 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for rovercrc
+2025-03-12 01:59:05,990 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user DefiIgnas
+2025-03-12 01:59:09,194 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:09,195 - twitter_scraper - INFO - Successfully retrieved 13 original tweets (filtered from 13 total) for DefiIgnas
+2025-03-12 01:59:09,195 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user blknoiz06
+2025-03-12 01:59:12,502 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:12,505 - twitter_scraper - INFO - Successfully retrieved 20 original tweets (filtered from 20 total) for blknoiz06
+2025-03-12 01:59:12,506 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user sjrosenblum
+2025-03-12 01:59:15,811 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:15,812 - twitter_scraper - INFO - Successfully retrieved 15 original tweets (filtered from 15 total) for sjrosenblum
+2025-03-12 01:59:15,812 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user beast_ico
+2025-03-12 01:59:18,796 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:18,796 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for beast_ico
+2025-03-12 01:59:18,797 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user lex_node
+2025-03-12 01:59:22,347 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:22,349 - twitter_scraper - INFO - Successfully retrieved 20 original tweets (filtered from 20 total) for lex_node
+2025-03-12 01:59:22,349 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user aixbt_agent
+2025-03-12 01:59:24,672 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:24,672 - twitter_scraper - INFO - Successfully retrieved 2 original tweets (filtered from 2 total) for aixbt_agent
+2025-03-12 01:59:24,673 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user intangiblecoins
+2025-03-12 01:59:27,752 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:27,753 - twitter_scraper - INFO - Successfully retrieved 8 original tweets (filtered from 8 total) for intangiblecoins
+2025-03-12 01:59:27,753 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user gakonst
+2025-03-12 01:59:30,905 - twitter_scraper - INFO - Response status: 200
+2025-03-12 01:59:30,906 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for gakonst
+2025-03-12 01:59:30,906 - __main__ - INFO - Successfully scraped tweets for 20 users
+2025-03-12 01:59:30,906 - __main__ - INFO - Starting analysis generation...
+2025-03-12 01:59:30,906 - __main__ - ERROR - Error in analysis pipeline: ReportGenerator.generate_full_report() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "c:\Users\Andrei\Desktop\gg\Kaito-Yappers-main\Kaito-Yappers-main\main.py", line 319, in run_analysis
+    report_content = await generator.generate_full_report(twitter.cache)  # Pass the cached tweets
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ReportGenerator.generate_full_report() takes 1 positional argument but 2 were given
+2025-03-12 01:59:32,397 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8168157325:AAG6AjIEpYCXEbfv7dA2NbS_4VZ9xsNHArk/sendMessage "HTTP/1.1 200 OK"
+2025-03-12 02:00:01,647 - __main__ - INFO - Starting up...
+2025-03-12 02:00:01,648 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 02:00:01,648 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 02:00:01,648 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 02:00:03,588 - kaito_leaderboard - INFO - Status Code: 201
+2025-03-12 02:00:03,590 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 02:00:03,591 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 02:00:03,591 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 02:00:03,591 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 02:00:03,592 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 02:00:04,408 - kaito_leaderboard - INFO - Status Code: 200
+2025-03-12 02:00:04,409 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 02:00:04,410 - __main__ - INFO - Kaito data processed and cached
+2025-03-12 02:00:04,411 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 02:00:04,411 - __main__ - INFO - Testing Twitter API with user: davidsacks47
+2025-03-12 02:00:04,411 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 02:00:07,372 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:07,374 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for davidsacks47
+2025-03-12 02:00:07,374 - __main__ - INFO - Successfully tested Twitter API, proceeding with 20 users
+2025-03-12 02:00:07,374 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 02:00:10,023 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:10,025 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for davidsacks47
+2025-03-12 02:00:10,025 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user NTmoney
+2025-03-12 02:00:12,794 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:12,794 - twitter_scraper - INFO - Successfully retrieved 11 original tweets (filtered from 11 total) for NTmoney
+2025-03-12 02:00:12,795 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user EleanorTerrett
+2025-03-12 02:00:15,697 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:15,698 - twitter_scraper - INFO - Successfully retrieved 12 original tweets (filtered from 12 total) for EleanorTerrett
+2025-03-12 02:00:15,698 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user iamDCinvestor
+2025-03-12 02:00:18,198 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:18,198 - twitter_scraper - INFO - Successfully retrieved 12 original tweets (filtered from 12 total) for iamDCinvestor
+2025-03-12 02:00:18,199 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user cz_binance
+2025-03-12 02:00:20,792 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:20,794 - twitter_scraper - INFO - Successfully retrieved 19 original tweets (filtered from 19 total) for cz_binance
+2025-03-12 02:00:20,794 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user mdudas
+2025-03-12 02:00:23,542 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:23,543 - twitter_scraper - INFO - Successfully retrieved 19 original tweets (filtered from 19 total) for mdudas
+2025-03-12 02:00:23,543 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user 0xMert_
+2025-03-12 02:00:26,307 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:26,309 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for 0xMert_
+2025-03-12 02:00:26,310 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user nic__carter
+2025-03-12 02:00:29,053 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:29,055 - twitter_scraper - INFO - Successfully retrieved 14 original tweets (filtered from 14 total) for nic__carter
+2025-03-12 02:00:29,055 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user ljxie
+2025-03-12 02:00:32,148 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:32,150 - twitter_scraper - INFO - Successfully retrieved 16 original tweets (filtered from 16 total) for ljxie
+2025-03-12 02:00:32,150 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user jchervinsky
+2025-03-12 02:00:34,478 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:34,479 - twitter_scraper - INFO - Successfully retrieved 6 original tweets (filtered from 6 total) for jchervinsky
+2025-03-12 02:00:34,479 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user Punk9277
+2025-03-12 02:00:37,258 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:37,259 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for Punk9277
+2025-03-12 02:00:37,259 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user rovercrc
+2025-03-12 02:00:39,944 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:39,945 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for rovercrc
+2025-03-12 02:00:39,945 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user DefiIgnas
+2025-03-12 02:00:42,521 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:42,522 - twitter_scraper - INFO - Successfully retrieved 13 original tweets (filtered from 13 total) for DefiIgnas
+2025-03-12 02:00:42,522 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user blknoiz06
+2025-03-12 02:00:45,091 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:45,094 - twitter_scraper - INFO - Successfully retrieved 20 original tweets (filtered from 20 total) for blknoiz06
+2025-03-12 02:00:45,095 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user sjrosenblum
+2025-03-12 02:00:47,912 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:47,913 - twitter_scraper - INFO - Successfully retrieved 15 original tweets (filtered from 15 total) for sjrosenblum
+2025-03-12 02:00:47,914 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user beast_ico
+2025-03-12 02:00:50,459 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:50,460 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for beast_ico
+2025-03-12 02:00:50,460 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user lex_node
+2025-03-12 02:00:53,894 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:53,895 - twitter_scraper - INFO - Successfully retrieved 20 original tweets (filtered from 20 total) for lex_node
+2025-03-12 02:00:53,896 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user aixbt_agent
+2025-03-12 02:00:55,748 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:55,749 - twitter_scraper - INFO - Successfully retrieved 2 original tweets (filtered from 2 total) for aixbt_agent
+2025-03-12 02:00:55,749 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user intangiblecoins
+2025-03-12 02:00:58,369 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:00:58,370 - twitter_scraper - INFO - Successfully retrieved 8 original tweets (filtered from 8 total) for intangiblecoins
+2025-03-12 02:00:58,370 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user gakonst
+2025-03-12 02:01:01,178 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:01:01,179 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for gakonst
+2025-03-12 02:01:01,179 - __main__ - INFO - Successfully scraped tweets for 20 users
+2025-03-12 02:01:01,180 - __main__ - INFO - Starting analysis generation...
+2025-03-12 02:01:01,180 - report_generator - INFO - Loaded 293 tweets from cache
+2025-03-12 02:01:01,183 - report_generator - INFO - Processing 20 users for trends analysis
+2025-03-12 02:01:01,183 - report_generator - INFO - Analyzing tweets for user 1/20: @davidsacks47
+2025-03-12 02:01:07,045 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=4575 request_id=req_e79d94a80aab49ebe27052975e4b016b response_code=200
+2025-03-12 02:01:07,050 - report_generator - INFO - Completed analysis for @davidsacks47
+2025-03-12 02:01:07,050 - report_generator - INFO - Analyzing tweets for user 2/20: @NTmoney
+2025-03-12 02:01:11,724 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=4267 request_id=req_d8637fe6b5d37e9be670772530a8a33b response_code=200
+2025-03-12 02:01:11,725 - report_generator - INFO - Completed analysis for @NTmoney
+2025-03-12 02:01:11,725 - report_generator - INFO - Analyzing tweets for user 3/20: @EleanorTerrett
+2025-03-12 02:01:14,928 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2409 request_id=req_26b504e5cf3a06a5474fb697894125f0 response_code=200
+2025-03-12 02:01:14,949 - report_generator - INFO - Completed analysis for @EleanorTerrett
+2025-03-12 02:01:14,950 - report_generator - INFO - Analyzing tweets for user 4/20: @iamDCinvestor
+2025-03-12 02:01:17,700 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2180 request_id=req_e11f601ae8ca869e8b94daf024c6251e response_code=200
+2025-03-12 02:01:17,703 - report_generator - INFO - Completed analysis for @iamDCinvestor
+2025-03-12 02:01:17,703 - report_generator - INFO - Analyzing tweets for user 5/20: @cz_binance
+2025-03-12 02:01:20,896 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2354 request_id=req_66fbc589089c0da19b245ebd1e27d486 response_code=200
+2025-03-12 02:01:20,897 - report_generator - INFO - Completed analysis for @cz_binance
+2025-03-12 02:01:20,897 - report_generator - INFO - Analyzing tweets for user 6/20: @mdudas
+2025-03-12 02:01:23,485 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2218 request_id=req_0c54a633a38810cca87f5b3c18417f72 response_code=200
+2025-03-12 02:01:23,489 - report_generator - INFO - Completed analysis for @mdudas
+2025-03-12 02:01:23,489 - report_generator - INFO - Analyzing tweets for user 7/20: @0xMert_
+2025-03-12 02:01:24,432 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=474 request_id=req_ea2f9aadbd57aad01409333886c0fd63 response_code=200
+2025-03-12 02:01:24,433 - report_generator - INFO - Completed analysis for @0xMert_
+2025-03-12 02:01:24,433 - report_generator - INFO - Analyzing tweets for user 8/20: @nic__carter
+2025-03-12 02:01:27,500 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2677 request_id=req_b0deca79dc62dd94bede8e6e76ff1f31 response_code=200
+2025-03-12 02:01:27,502 - report_generator - INFO - Completed analysis for @nic__carter
+2025-03-12 02:01:27,502 - report_generator - INFO - Analyzing tweets for user 9/20: @ljxie
+2025-03-12 02:01:30,527 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2222 request_id=req_798412d15430cc65de5f6b6b2158109a response_code=200
+2025-03-12 02:01:30,529 - report_generator - INFO - Completed analysis for @ljxie
+2025-03-12 02:01:30,529 - report_generator - INFO - Analyzing tweets for user 10/20: @jchervinsky
+2025-03-12 02:01:32,575 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1655 request_id=req_329731b2f3ada662ed9dc43ccb4735e3 response_code=200
+2025-03-12 02:01:32,582 - report_generator - INFO - Completed analysis for @jchervinsky
+2025-03-12 02:01:32,582 - report_generator - INFO - Analyzing tweets for user 11/20: @Punk9277
+2025-03-12 02:01:35,344 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2378 request_id=req_150a6c8982eaf3132d8d511d6a5d8a47 response_code=200
+2025-03-12 02:01:35,347 - report_generator - INFO - Completed analysis for @Punk9277
+2025-03-12 02:01:35,347 - report_generator - INFO - Analyzing tweets for user 12/20: @rovercrc
+2025-03-12 02:01:37,697 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1928 request_id=req_8ac58fcc70e4dc10d57e0a47d0660fd6 response_code=200
+2025-03-12 02:01:37,707 - report_generator - INFO - Completed analysis for @rovercrc
+2025-03-12 02:01:37,708 - report_generator - INFO - Analyzing tweets for user 13/20: @DefiIgnas
+2025-03-12 02:01:39,970 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1865 request_id=req_b88416cc3c932877543429948d464958 response_code=200
+2025-03-12 02:01:39,987 - report_generator - INFO - Completed analysis for @DefiIgnas
+2025-03-12 02:01:39,987 - report_generator - INFO - Analyzing tweets for user 14/20: @blknoiz06
+2025-03-12 02:01:41,574 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1187 request_id=req_2d5c6a95a9befbaca8b5288fab3eb7ca response_code=200
+2025-03-12 02:01:41,575 - report_generator - INFO - Completed analysis for @blknoiz06
+2025-03-12 02:01:41,575 - report_generator - INFO - Analyzing tweets for user 15/20: @sjrosenblum
+2025-03-12 02:01:44,420 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2451 request_id=req_2eb61c9aa40e0463067998c6ff02630b response_code=200
+2025-03-12 02:01:44,427 - report_generator - INFO - Completed analysis for @sjrosenblum
+2025-03-12 02:01:44,427 - report_generator - INFO - Analyzing tweets for user 16/20: @beast_ico
+2025-03-12 02:01:48,840 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=4026 request_id=req_f1f42290a5e7caf37026d6acbb679ab2 response_code=200
+2025-03-12 02:01:48,848 - report_generator - INFO - Completed analysis for @beast_ico
+2025-03-12 02:01:48,848 - report_generator - INFO - Analyzing tweets for user 17/20: @lex_node
+2025-03-12 02:01:51,547 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2337 request_id=req_9a024992dd5808e43b028202eb4d1372 response_code=200
+2025-03-12 02:01:51,548 - report_generator - INFO - Completed analysis for @lex_node
+2025-03-12 02:01:51,549 - report_generator - INFO - Analyzing tweets for user 18/20: @aixbt_agent
+2025-03-12 02:01:55,177 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=3246 request_id=req_7be3d41d3cd869f5f2730aa6f33000db response_code=200
+2025-03-12 02:01:55,178 - report_generator - INFO - Completed analysis for @aixbt_agent
+2025-03-12 02:01:55,178 - report_generator - INFO - Analyzing tweets for user 19/20: @intangiblecoins
+2025-03-12 02:01:57,949 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2369 request_id=req_223799744c7032318d339c24d89ef82b response_code=200
+2025-03-12 02:01:57,955 - report_generator - INFO - Completed analysis for @intangiblecoins
+2025-03-12 02:01:57,955 - report_generator - INFO - Analyzing tweets for user 20/20: @gakonst
+2025-03-12 02:02:01,176 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2841 request_id=req_0f69dc451c75a7f33389f4ad4726f05a response_code=200
+2025-03-12 02:02:01,177 - report_generator - INFO - Completed analysis for @gakonst
+2025-03-12 02:02:01,193 - report_generator - INFO - Raw report saved to: reports/raw_report_20250312_020201.md
+2025-03-12 02:02:01,194 - report_generator - INFO - Report generated: reports/analysis_report_20250312_020201.md
+2025-03-12 02:02:01,194 - __main__ - INFO - Analysis report generated: reports/analysis_report_20250312_020201.md
+2025-03-12 02:02:02,629 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8168157325:AAG6AjIEpYCXEbfv7dA2NbS_4VZ9xsNHArk/sendMessage "HTTP/1.1 200 OK"
+2025-03-12 02:02:03,384 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=258 request_id=req_d1ad11086af7eae51f44e019ff0a3027 response_code=200
+2025-03-12 02:02:04,089 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=281 request_id=req_6ecf1de3da07bc84350d936fb3dc67ab response_code=200
+2025-03-12 02:02:04,768 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=301 request_id=req_d6e3391db204a477bee659526fd46fea response_code=200
+2025-03-12 02:02:05,400 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=264 request_id=req_185c921fc90b7b6f745961fd06e112f9 response_code=200
+2025-03-12 02:02:06,318 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=540 request_id=req_c6bf8dd90d5053eb6cc109ec044b5d1b response_code=200
+2025-03-12 02:02:06,972 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=295 request_id=req_fdbeaa270544b961c5306a297bcbe019 response_code=200
+2025-03-12 02:02:07,605 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=273 request_id=req_e01a9d444dc621800dfc5fca92a92b5d response_code=200
+2025-03-12 02:02:08,285 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=319 request_id=req_c6184c2868f00c146e86afea33466e28 response_code=200
+2025-03-12 02:02:09,008 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=281 request_id=req_427437a9a6c986ae18f78eb7ec00d1a9 response_code=200
+2025-03-12 02:02:09,665 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=251 request_id=req_3e58fb172dc8518605a4f53e0e778b04 response_code=200
+2025-03-12 02:02:10,361 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=300 request_id=req_528f0ae24b66cff9519809fac1767c21 response_code=200
+2025-03-12 02:02:10,973 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=232 request_id=req_ac28736297549ca6ca5f26cd479b6571 response_code=200
+2025-03-12 02:02:14,003 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=494 request_id=req_956137748615641e3cc9f615c2168fcc response_code=200
+2025-03-12 02:02:14,607 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=239 request_id=req_c060a62b2f5c72d6bcb6b744587bdfe0 response_code=200
+2025-03-12 02:02:15,265 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=265 request_id=req_0b27b2fdfe9524abf46187d77678b330 response_code=200
+2025-03-12 02:02:15,982 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=336 request_id=req_a2a7cc9f7c6595d818470f9111b309bc response_code=200
+2025-03-12 02:02:16,697 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=331 request_id=req_1a594e3128cf09083a0feffb49c8039c response_code=200
+2025-03-12 02:02:17,551 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=432 request_id=req_a81d181e72bdfceb0e115e19323a7a5d response_code=200
+2025-03-12 02:02:18,360 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=381 request_id=req_60002b5bcdb0f42dcba57a3209b0550c response_code=200
+2025-03-12 02:02:19,085 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=356 request_id=req_0fa30f0ea2698d4e389dfc0c41b45ccd response_code=200
+2025-03-12 02:02:19,739 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=291 request_id=req_000f761b965f72b4304dee62b239eed5 response_code=200
+2025-03-12 02:02:23,308 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=3182 request_id=req_f96b9d1445d362cbd74f861ae8b4b114 response_code=200
+2025-03-12 02:02:24,115 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=349 request_id=req_b4759322cd24c3dc7294787437feead5 response_code=200
+2025-03-12 02:02:24,818 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=309 request_id=req_15c9e97a16ca2ac2be0677f4e5a38dd4 response_code=200
+2025-03-12 02:02:25,403 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=197 request_id=req_6cf604d3db1eb358067d75c127dd2da0 response_code=200
+2025-03-12 02:02:26,009 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=251 request_id=req_947332ef33fa2d7cfe620919af9d8bd8 response_code=200
+2025-03-12 02:02:26,900 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=486 request_id=req_471f9e98b446f042d9460970ce29720a response_code=200
+2025-03-12 02:02:27,962 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=698 request_id=req_993806b095d5eccbe36a93be1e7b19b0 response_code=200
+2025-03-12 02:02:28,544 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=206 request_id=req_a9592b8caba549449767282c93925f2e response_code=200
+2025-03-12 02:02:29,096 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=166 request_id=req_05136dd9db3801531d8768567763bc74 response_code=200
+2025-03-12 02:02:29,736 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=262 request_id=req_7b5310e7bdee2ed806acc8a6d96822f8 response_code=200
+2025-03-12 02:02:30,402 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=288 request_id=req_cd9142b62d43c7da63455bfe925fcc0a response_code=200
+2025-03-12 02:02:32,309 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1553 request_id=req_fff2fa88055edee1c9bdbf8f71edfba0 response_code=200
+2025-03-12 02:02:32,960 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=266 request_id=req_1a186be2a6a577c230f91cab8e015061 response_code=200
+2025-03-12 02:02:33,652 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=299 request_id=req_d5a764d0d5abd0045a29bc2c7e141b8d response_code=200
+2025-03-12 02:02:34,344 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=282 request_id=req_a24bf30a965c89b356471101a0be0722 response_code=200
+2025-03-12 02:02:36,301 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1577 request_id=req_58e877ad14f40d9778928a22fb06ad31 response_code=200
+2025-03-12 02:02:40,568 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=3896 request_id=req_06889fac2803d30363f0adb5e4691dee response_code=200
+2025-03-12 02:02:41,897 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=426 request_id=req_2a422abb780777c61d5b7a66d5eca768 response_code=200
+2025-03-12 02:02:42,495 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=206 request_id=req_31d8d1c3035aca13124073008510c6e8 response_code=200
+2025-03-12 02:02:43,244 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=338 request_id=req_87294f430f6d94968f44ebb4ff2dd4a3 response_code=200
+2025-03-12 02:02:43,894 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=277 request_id=req_cc22780f2812a96b422ee3afd617b401 response_code=200
+2025-03-12 02:02:44,444 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=168 request_id=req_76b72c88baf872d7b9e2d1f5b9f9c696 response_code=200
+2025-03-12 02:02:45,537 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=717 request_id=req_19775a78d2e77fe89a25782d9c36d96c response_code=200
+2025-03-12 02:02:46,151 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=239 request_id=req_37c4b1972b4b48256180d049d7768b57 response_code=200
+2025-03-12 02:02:46,794 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=276 request_id=req_09b5705b96ed8f42248f93129e9210f1 response_code=200
+2025-03-12 02:02:47,427 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=217 request_id=req_c61f4cdec009feeca05d28c1fb83768c response_code=200
+2025-03-12 02:02:48,224 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=431 request_id=req_dbda1cb5f60cdb98b5265d1e9edd66a4 response_code=200
+2025-03-12 02:02:48,922 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=311 request_id=req_8eec7c6f0a37d7d9283517f581e439ee response_code=200
+2025-03-12 02:02:49,583 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=273 request_id=req_10a3b3ee603b7b96a2a864882b041b7e response_code=200
+2025-03-12 02:02:50,263 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=306 request_id=req_12e6ab599f9f9c7ff7c8a6b781b948fd response_code=200
+2025-03-12 02:02:50,846 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=216 request_id=req_dbb9689d288571d15c9316a18e5b7703 response_code=200
+2025-03-12 02:02:51,424 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=201 request_id=req_937cc8ea9d00d9e2974e6383eb11a7a1 response_code=200
+2025-03-12 02:02:52,296 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=487 request_id=req_40ff8de91afe2ca289492d503cb2964c response_code=200
+2025-03-12 02:02:52,896 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=241 request_id=req_f7e3ce7df5151ef7fddbd1f49519d4fa response_code=200
+2025-03-12 02:02:53,556 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=286 request_id=req_243557216559127230102a045bf308f7 response_code=200
+2025-03-12 02:02:54,188 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=250 request_id=req_3f0243404a53066536d137ea30f59715 response_code=200
+2025-03-12 02:02:54,795 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=226 request_id=req_215b4c87ce69db58bf79522622588a68 response_code=200
+2025-03-12 02:02:55,561 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=381 request_id=req_5e835c54f699d7b44f689858d7b76fba response_code=200
+2025-03-12 02:02:56,606 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=650 request_id=req_3f6810c6ae428e6bb49edd753c29a03f response_code=200
+2025-03-12 02:02:57,299 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=321 request_id=req_cd29abb0295b0518d6a0aad272a3d706 response_code=200
+2025-03-12 02:02:57,953 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=278 request_id=req_3f3dcf3417a8b8e1dc9248db9071f44d response_code=200
+2025-03-12 02:02:58,646 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=308 request_id=req_ed6c8a09ad3b4bd8555d8e4014b52f2b response_code=200
+2025-03-12 02:02:59,331 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=303 request_id=req_899da34540bca5cf8466f213851564f9 response_code=200
+2025-03-12 02:02:59,990 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=269 request_id=req_556439679b84f1be60fafbbfa9e7e61a response_code=200
+2025-03-12 02:03:00,678 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=261 request_id=req_15e202b3d3d26d58c954c00831ec0e33 response_code=200
+2025-03-12 02:03:01,527 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=453 request_id=req_513412cf0af7670a5a47657c5456e765 response_code=200
+2025-03-12 02:03:02,193 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=299 request_id=req_ac40f17c0f731df6e551893ffc1500ad response_code=200
+2025-03-12 02:03:02,837 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=251 request_id=req_3fc04841881590c2db20d851c365a858 response_code=200
+2025-03-12 02:03:03,500 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=264 request_id=req_a8a56880e5be46b7dfd97de9bf8a3ef2 response_code=200
+2025-03-12 02:03:04,691 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=727 request_id=req_19aaa33f84bf0dc584e60f8df99df900 response_code=200
+2025-03-12 02:03:05,853 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=781 request_id=req_ca72e236660572400be25167a6644a9a response_code=200
+2025-03-12 02:03:07,527 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=265 request_id=req_442d09a94063c6147a7b0ac98291ed39 response_code=200
+2025-03-12 02:03:08,633 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8168157325:AAG6AjIEpYCXEbfv7dA2NbS_4VZ9xsNHArk/sendMessage "HTTP/1.1 200 OK"
+2025-03-12 02:03:09,093 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8168157325:AAG6AjIEpYCXEbfv7dA2NbS_4VZ9xsNHArk/sendMessage "HTTP/1.1 200 OK"
+2025-03-12 02:03:09,096 - __main__ - INFO - Complete analysis pipeline finished successfully!
+2025-03-12 02:04:09,103 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 02:04:09,103 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 02:04:09,103 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 02:04:11,070 - kaito_leaderboard - INFO - Status Code: 201
+2025-03-12 02:04:11,071 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 02:04:11,072 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 02:04:11,073 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 02:04:11,073 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 02:04:11,073 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 02:04:11,837 - kaito_leaderboard - INFO - Status Code: 200
+2025-03-12 02:04:11,838 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 02:04:11,840 - __main__ - INFO - Kaito data processed and cached
+2025-03-12 02:04:11,840 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 02:04:11,840 - __main__ - INFO - Testing Twitter API with user: davidsacks47
+2025-03-12 02:04:11,840 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 02:04:22,797 - __main__ - INFO - Starting up...
+2025-03-12 02:04:22,798 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 02:04:22,798 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 02:04:22,798 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 02:04:24,175 - kaito_leaderboard - INFO - Status Code: 200
+2025-03-12 02:04:24,177 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 02:04:24,178 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 02:04:24,178 - __main__ - INFO - Starting scheduled analysis run...
+2025-03-12 02:04:24,178 - __main__ - INFO - Starting Kaito leaderboard processing...
+2025-03-12 02:04:24,178 - kaito_leaderboard - INFO - Making request to https://hub.kaito.ai/api/v1/gateway/ai
+2025-03-12 02:04:24,746 - kaito_leaderboard - INFO - Status Code: 200
+2025-03-12 02:04:24,747 - kaito_leaderboard - INFO - Successfully processed top 20 accounts
+2025-03-12 02:04:24,748 - __main__ - INFO - Kaito data processed and cached
+2025-03-12 02:04:24,748 - __main__ - INFO - Starting Twitter data scraping...
+2025-03-12 02:04:24,748 - __main__ - INFO - Testing Twitter API with user: davidsacks47
+2025-03-12 02:04:24,748 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 02:04:27,534 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:27,535 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for davidsacks47
+2025-03-12 02:04:27,536 - __main__ - INFO - Successfully tested Twitter API, proceeding with 20 users
+2025-03-12 02:04:27,536 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user davidsacks47
+2025-03-12 02:04:30,284 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:30,286 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for davidsacks47
+2025-03-12 02:04:30,286 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user NTmoney
+2025-03-12 02:04:32,956 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:32,957 - twitter_scraper - INFO - Successfully retrieved 11 original tweets (filtered from 11 total) for NTmoney
+2025-03-12 02:04:32,957 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user EleanorTerrett
+2025-03-12 02:04:35,822 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:35,824 - twitter_scraper - INFO - Successfully retrieved 12 original tweets (filtered from 12 total) for EleanorTerrett
+2025-03-12 02:04:35,824 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user iamDCinvestor
+2025-03-12 02:04:38,306 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:38,307 - twitter_scraper - INFO - Successfully retrieved 12 original tweets (filtered from 12 total) for iamDCinvestor
+2025-03-12 02:04:38,307 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user cz_binance
+2025-03-12 02:04:41,100 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:41,101 - twitter_scraper - INFO - Successfully retrieved 19 original tweets (filtered from 19 total) for cz_binance
+2025-03-12 02:04:41,101 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user mdudas
+2025-03-12 02:04:43,890 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:43,892 - twitter_scraper - INFO - Successfully retrieved 19 original tweets (filtered from 19 total) for mdudas
+2025-03-12 02:04:43,892 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user 0xMert_
+2025-03-12 02:04:46,773 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:46,774 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for 0xMert_
+2025-03-12 02:04:46,774 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user nic__carter
+2025-03-12 02:04:49,531 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:49,532 - twitter_scraper - INFO - Successfully retrieved 14 original tweets (filtered from 14 total) for nic__carter
+2025-03-12 02:04:49,533 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user ljxie
+2025-03-12 02:04:52,493 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:52,495 - twitter_scraper - INFO - Successfully retrieved 16 original tweets (filtered from 16 total) for ljxie
+2025-03-12 02:04:52,495 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user jchervinsky
+2025-03-12 02:04:54,752 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:54,753 - twitter_scraper - INFO - Successfully retrieved 6 original tweets (filtered from 6 total) for jchervinsky
+2025-03-12 02:04:54,753 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user Punk9277
+2025-03-12 02:04:57,481 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:04:57,482 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for Punk9277
+2025-03-12 02:04:57,482 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user rovercrc
+2025-03-12 02:05:00,194 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:00,195 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for rovercrc
+2025-03-12 02:05:00,196 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user DefiIgnas
+2025-03-12 02:05:02,962 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:02,963 - twitter_scraper - INFO - Successfully retrieved 13 original tweets (filtered from 13 total) for DefiIgnas
+2025-03-12 02:05:02,964 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user blknoiz06
+2025-03-12 02:05:06,092 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:06,095 - twitter_scraper - INFO - Successfully retrieved 20 original tweets (filtered from 20 total) for blknoiz06
+2025-03-12 02:05:06,096 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user sjrosenblum
+2025-03-12 02:05:08,782 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:08,784 - twitter_scraper - INFO - Successfully retrieved 15 original tweets (filtered from 15 total) for sjrosenblum
+2025-03-12 02:05:08,784 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user beast_ico
+2025-03-12 02:05:11,071 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:11,072 - twitter_scraper - INFO - Successfully retrieved 18 original tweets (filtered from 18 total) for beast_ico
+2025-03-12 02:05:11,072 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user lex_node
+2025-03-12 02:05:14,250 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:14,252 - twitter_scraper - INFO - Successfully retrieved 20 original tweets (filtered from 20 total) for lex_node
+2025-03-12 02:05:14,252 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user aixbt_agent
+2025-03-12 02:05:16,155 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:16,156 - twitter_scraper - INFO - Successfully retrieved 2 original tweets (filtered from 2 total) for aixbt_agent
+2025-03-12 02:05:16,156 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user intangiblecoins
+2025-03-12 02:05:18,750 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:18,751 - twitter_scraper - INFO - Successfully retrieved 8 original tweets (filtered from 8 total) for intangiblecoins
+2025-03-12 02:05:18,752 - twitter_scraper - INFO - Making request to https://api.twitterapi.io/twitter/user/last_tweets for user gakonst
+2025-03-12 02:05:21,718 - twitter_scraper - INFO - Response status: 200
+2025-03-12 02:05:21,720 - twitter_scraper - INFO - Successfully retrieved 17 original tweets (filtered from 17 total) for gakonst
+2025-03-12 02:05:21,720 - __main__ - INFO - Successfully scraped tweets for 20 users
+2025-03-12 02:05:21,720 - __main__ - INFO - Starting analysis generation...
+2025-03-12 02:05:21,720 - report_generator - INFO - Loaded 293 tweets from cache
+2025-03-12 02:05:21,721 - report_generator - INFO - Processing 20 users for trends analysis
+2025-03-12 02:05:21,722 - report_generator - INFO - Analyzing tweets for user 1/20: @davidsacks47
+2025-03-12 02:05:28,504 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=5831 request_id=req_d6cad22fc0a80b545650382b79923034 response_code=200
+2025-03-12 02:05:28,507 - report_generator - INFO - Completed analysis for @davidsacks47
+2025-03-12 02:05:28,507 - report_generator - INFO - Analyzing tweets for user 2/20: @NTmoney
+2025-03-12 02:05:30,627 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1752 request_id=req_88a554df164bf5d98e3e6c68ab123b89 response_code=200
+2025-03-12 02:05:30,631 - report_generator - INFO - Completed analysis for @NTmoney
+2025-03-12 02:05:30,631 - report_generator - INFO - Analyzing tweets for user 3/20: @EleanorTerrett
+2025-03-12 02:05:33,797 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2777 request_id=req_21acc7bc99293522c7c2e679b4c9df5c response_code=200
+2025-03-12 02:05:33,798 - report_generator - INFO - Completed analysis for @EleanorTerrett
+2025-03-12 02:05:33,798 - report_generator - INFO - Analyzing tweets for user 4/20: @iamDCinvestor
+2025-03-12 02:05:36,039 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1798 request_id=req_fc1e3ac1505d3b19299ce0bcc4b595c3 response_code=200
+2025-03-12 02:05:36,069 - report_generator - INFO - Completed analysis for @iamDCinvestor
+2025-03-12 02:05:36,070 - report_generator - INFO - Analyzing tweets for user 5/20: @cz_binance
+2025-03-12 02:05:38,238 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1812 request_id=req_cefdf871c03bdaa6e13792d6b4ca2abc response_code=200
+2025-03-12 02:05:38,240 - report_generator - INFO - Completed analysis for @cz_binance
+2025-03-12 02:05:38,240 - report_generator - INFO - Analyzing tweets for user 6/20: @mdudas
+2025-03-12 02:05:41,973 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=3190 request_id=req_d925bd80382719db0f52cebcc5346533 response_code=200
+2025-03-12 02:05:41,975 - report_generator - INFO - Completed analysis for @mdudas
+2025-03-12 02:05:41,975 - report_generator - INFO - Analyzing tweets for user 7/20: @0xMert_
+2025-03-12 02:05:43,721 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1366 request_id=req_7f8fc94915ff92ca06c0707cc770aaa5 response_code=200
+2025-03-12 02:05:43,726 - report_generator - INFO - Completed analysis for @0xMert_
+2025-03-12 02:05:43,726 - report_generator - INFO - Analyzing tweets for user 8/20: @nic__carter
+2025-03-12 02:05:47,101 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2979 request_id=req_12fbb95366f4663082fb22c216c639b0 response_code=200
+2025-03-12 02:05:47,102 - report_generator - INFO - Completed analysis for @nic__carter
+2025-03-12 02:05:47,102 - report_generator - INFO - Analyzing tweets for user 9/20: @ljxie
+2025-03-12 02:05:49,858 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2293 request_id=req_e514fb94dc6598b40dc60ff84d3e5b3c response_code=200
+2025-03-12 02:05:49,859 - report_generator - INFO - Completed analysis for @ljxie
+2025-03-12 02:05:49,859 - report_generator - INFO - Analyzing tweets for user 10/20: @jchervinsky
+2025-03-12 02:05:51,598 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1343 request_id=req_e50b3d44ac243ca7c6da179f60b56f7c response_code=200
+2025-03-12 02:05:51,599 - report_generator - INFO - Completed analysis for @jchervinsky
+2025-03-12 02:05:51,599 - report_generator - INFO - Analyzing tweets for user 11/20: @Punk9277
+2025-03-12 02:05:55,029 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=3019 request_id=req_41d792f3b6b1c94ca75a7895f0c318c6 response_code=200
+2025-03-12 02:05:55,040 - report_generator - INFO - Completed analysis for @Punk9277
+2025-03-12 02:05:55,040 - report_generator - INFO - Analyzing tweets for user 12/20: @rovercrc
+2025-03-12 02:05:57,100 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1681 request_id=req_a65df12e34a20314d457dbfce3d56302 response_code=200
+2025-03-12 02:05:57,105 - report_generator - INFO - Completed analysis for @rovercrc
+2025-03-12 02:05:57,105 - report_generator - INFO - Analyzing tweets for user 13/20: @DefiIgnas
+2025-03-12 02:06:00,675 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=3197 request_id=req_b064d8cd8dd2bc5109e63f78b8b48673 response_code=200
+2025-03-12 02:06:00,678 - report_generator - INFO - Completed analysis for @DefiIgnas
+2025-03-12 02:06:00,678 - report_generator - INFO - Analyzing tweets for user 14/20: @blknoiz06
+2025-03-12 02:06:02,450 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1396 request_id=req_429f2b304bff9d1a67a0609fb6a66bd7 response_code=200
+2025-03-12 02:06:02,484 - report_generator - INFO - Completed analysis for @blknoiz06
+2025-03-12 02:06:02,484 - report_generator - INFO - Analyzing tweets for user 15/20: @sjrosenblum
+2025-03-12 02:06:07,593 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=4717 request_id=req_caf125db61056c9ac2123f0430a3b7d7 response_code=200
+2025-03-12 02:06:07,593 - report_generator - INFO - Completed analysis for @sjrosenblum
+2025-03-12 02:06:07,594 - report_generator - INFO - Analyzing tweets for user 16/20: @beast_ico
+2025-03-12 02:06:10,292 - openai - INFO - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=2314 request_id=req_115b5cc31a1dcbdda36ff7c0e6b8f0bf response_code=200
+2025-03-12 02:06:10,293 - report_generator - INFO - Completed analysis for @beast_ico
+2025-03-12 02:06:10,294 - report_generator - INFO - Analyzing tweets for user 17/20: @lex_node
+2025-03-12 02:06:13,636 - __main__ - INFO - Starting up...
+2025-03-12 02:06:13,636 - __main__ - INFO - Waiting until next run time at 2025-03-12 12:00:00+00:00 UTC (20:00 UTC+8)
+2025-03-12 02:08:51,510 - __main__ - INFO - Starting up...
+2025-03-12 02:08:51,511 - __main__ - INFO - Waiting until next run time at 2025-03-12 12:00:00+00:00 UTC (20:00 UTC+8)
+2025-03-12 02:11:30,355 - __main__ - INFO - Starting up...
+2025-03-12 02:11:30,355 - __main__ - INFO - Waiting until next run time at 2025-03-12 12:00:00+00:00 UTC (20:00 UTC+8)
